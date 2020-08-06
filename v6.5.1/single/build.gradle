@@ -9,8 +9,6 @@ repositories {
 }
 
 group = 'org.avoidfrust.learn.gradle'
-afterReleaseBuild.dependsOn publish
-
 
 dependencies {
     testImplementation 'junit:junit:4.12'
@@ -39,3 +37,4 @@ publishing {
 release {
     failOnUnversionedFiles = false
 }
+afterReleaseBuild.dependsOn publish
