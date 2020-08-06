@@ -8,7 +8,7 @@ repositories {
     jcenter()
 }
 
-group = 'org.gradle.sample'
+group = 'org.avoidfrust.learn.gradle'
 
 
 dependencies {
