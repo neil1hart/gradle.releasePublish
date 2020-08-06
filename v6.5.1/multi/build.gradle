@@ -38,3 +38,7 @@ release {
     failOnUnversionedFiles = false
 }
 afterReleaseBuild.dependsOn publish
+
+subprojects {
+    apply plugin: 'java'
+}

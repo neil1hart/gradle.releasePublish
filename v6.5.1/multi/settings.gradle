@@ -8,3 +8,7 @@
  */
 
 rootProject.name = 'releaseMulti'
+include 'projectA'
+include 'projectB'
+include 'projectC'
+
