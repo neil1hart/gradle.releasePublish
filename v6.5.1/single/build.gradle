@@ -1,0 +1,35 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+repositories {
+    jcenter()
+}
+
+group = 'org.gradle.sample'
+
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            // change URLs to point to your repos, e.g. http://my.org/repo
+            def releasesRepoUrl = "http://localhost:8080/repository/internal"
+            def snapshotsRepoUrl = "http://localhost:8080/repository/snapshots"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = 'deployer'
+                password = 'deployer123'
+            }
+        }
+    }
+}
