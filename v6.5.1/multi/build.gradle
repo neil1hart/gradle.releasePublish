@@ -1,6 +1,4 @@
 plugins {
-//    id 'java-library'
-//    id 'maven-publish'
     id 'net.researchgate.release' version '2.8.1'
 }
 
@@ -10,32 +8,10 @@ repositories {
 
 group = 'org.avoidfrust.learn.gradle'
 
-//publishing {
-//    publications {
-//        maven(MavenPublication) {
-//            from components.java
-//        }
-//    }
-//    repositories {
-//        maven {
-//            // change URLs to point to your repos, e.g. http://my.org/repo
-//            def releasesRepoUrl = "http://localhost:8080/repository/internal"
-//            def snapshotsRepoUrl = "http://localhost:8080/repository/snapshots"
-//            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-//            credentials {
-//                username = 'deployer'
-//                password = 'deployer123'
-//            }
-//        }
-//    }
-//}
-
 release {
     failOnUnversionedFiles = false
+    buildTasks = [ ]
 }
-//afterReleaseBuild.dependsOn publish
-
-
 
 subprojects {
     apply plugin: 'java'
@@ -70,17 +46,3 @@ subprojects {
 }
 
 afterReleaseBuild.dependsOn project.getSubprojects().collect({it.getTasks().getByName("publish")})
-
-task build {
-    println 'building root'
-}
-task startmessage {
-    println 'starting build'
-}
-
-task printversion {
-    println project.version
-}
-
-beforeReleaseBuild.dependsOn startmessage
-afterReleaseBuild.dependsOn printversion
