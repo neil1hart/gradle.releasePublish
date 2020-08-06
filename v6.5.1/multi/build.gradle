@@ -39,6 +39,8 @@ release {
 }
 afterReleaseBuild.dependsOn publish
 
+
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'
@@ -70,3 +72,17 @@ subprojects {
     }
 
 }
+
+project.tasks.afterReleaseBuild.dependsOn
+project.getSubprojects().collect({it.getTasks().getByName("publish")})
+
+//task(startmessage) << {
+//    println 'starting build'
+//}
+//
+//task(printversion) << {
+//    println project.version
+//}
+//
+//beforeReleaseBuild.dependsOn startmessage
+//afterReleaseBuild.dependsOn printversion
