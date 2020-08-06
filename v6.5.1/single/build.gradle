@@ -38,4 +38,4 @@ publishing {
 release {
     failOnUnversionedFiles = false
 }
-afterReleaseBuild.dependsOn uploadArchives
+afterReleaseBuild.dependsOn publish
