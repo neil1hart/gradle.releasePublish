@@ -41,4 +41,29 @@ afterReleaseBuild.dependsOn publish
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                afterEvaluate {
+                    artifactId = jar.archiveBaseName
+                }
+            }
+        }
+        repositories {
+            maven {
+                // change URLs to point to your repos, e.g. http://my.org/repo
+                def releasesRepoUrl = "http://localhost:8080/repository/internal"
+                def snapshotsRepoUrl = "http://localhost:8080/repository/snapshots"
+                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                credentials {
+                    username = 'deployer'
+                    password = 'deployer123'
+                }
+            }
+        }
+    }
+
 }
