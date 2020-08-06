@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'net.researchgate.release' version '2.8.1'
 }
 
 repositories {
@@ -33,3 +34,8 @@ publishing {
         }
     }
 }
+
+release {
+    failOnUnversionedFiles = false
+}
+afterReleaseBuild.dependsOn uploadArchives
