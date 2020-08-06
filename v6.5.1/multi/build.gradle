@@ -37,7 +37,7 @@ publishing {
 release {
     failOnUnversionedFiles = false
 }
-afterReleaseBuild.dependsOn publish
+//afterReleaseBuild.dependsOn publish
 
 
 
