@@ -43,13 +43,16 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'
 
+    group = 'org.avoidfrust.learn.gradle'
+
     publishing {
         publications {
             maven(MavenPublication) {
                 from components.java
-                afterEvaluate {
-                    artifactId = jar.archiveBaseName
-                }
+//                afterEvaluate {
+                groupId project.group
+                artifactId project.name
+//            }
             }
         }
         repositories {
