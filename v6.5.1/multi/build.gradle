@@ -73,8 +73,7 @@ subprojects {
 
 }
 
-project.tasks.afterReleaseBuild.dependsOn
-project.getSubprojects().collect({it.getTasks().getByName("publish")})
+afterReleaseBuild.dependsOn project.getSubprojects().collect({it.getTasks().getByName("publish")})
 
 //task(startmessage) << {
 //    println 'starting build'
